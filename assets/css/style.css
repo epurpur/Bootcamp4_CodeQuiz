@@ -1,0 +1,47 @@
+
+/* Global Styles */
+* {
+    /*border: 1px solid black;*/
+}
+
+/* <body> */
+
+body {
+    background-color: rgb(178, 180, 198);
+    color: rgb(57, 57, 57);
+}
+
+/* <main> */
+
+body h1 {
+    text-align: center;
+    font-size: 50px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    height: 70px;
+    padding: 10px;
+}
+
+#question-title {
+    text-align: center;
+    font-size: 25px;
+}
+
+#question-bank {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+ol {
+    font-size: 25px;
+}
+
+li {
+    padding: 5px;
+    margin: 5px;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    background-color: rgb(255, 237, 237);
+}
+
