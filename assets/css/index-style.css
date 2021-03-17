@@ -90,6 +90,43 @@ ol {
 }
 
 
+#final-user-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--card-background);
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 20px 90px 20px 90px;
+    width: 75%;
+}
+
+#user-name {
+    width: 500px;
+    font-size: 25px;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: var(--card-color);
+    color: var(--font-white);
+}
+
+#user-name:hover {
+    border: 1px solid white;
+} 
+
+#btnSubmitScore {
+    font-size: 25px;
+    border-radius: 5px;
+    background-color: var(--card-color);
+    color: var(--font-white);
+}
+
+#btnSubmitScore:hover {
+    border: 1px solid white;
+}
+
 
 /* Media Queries */
 @media screen and (max-width: 680px) {

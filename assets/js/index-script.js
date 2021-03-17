@@ -6,7 +6,10 @@ var numberCorrect = document.getElementById("number-correct");
 var questions = document.getElementById("question-bank");
 var startBtn = document.getElementById("btn-newGame");
 var scoreboard = document.getElementById("scoreboard");
-
+var finalInputForm = document.getElementById('final-user-input');
+var finalScoreValue = document.getElementById('final-score-value');
+var submissionForm = document.getElementById('submission-form');
+var userName = document.getElementById('user-name');
 
 /** holds all questions used in the quiz. Stores an array of objects. Each question is an object.
  *  Each question has three properties:
@@ -74,7 +77,6 @@ function evaluateUserChoice(randomQ) {
                     makeQuestion();   //make next question
                 } else {                         //if there are no questions remaining in the questionBank
                     setFinalStyling();   //set final styles of page; 
-
                 }
             } 
         });
@@ -84,20 +86,37 @@ function evaluateUserChoice(randomQ) {
 
 function setFinalStyling() {
     // renders final styles on page to display final score and final game form
-    questions.remove();
+    questions.remove();     //removes questionBank
+    
+    // make final input form visible;
+    finalInputForm.style.visibility = "visible";
+
+    // show final score
+    finalScoreValue.textContent = score;
 }
 
 
-
-// starts with invisible questions, when start button is clicked, questions become visible and a question appears
+// starts with invisible questions and final input form, when start button is clicked, questions become visible and a question appears
 questions.style.visibility = "hidden";
-startBtn.addEventListener('click', function() {
+finalInputForm.style.visibility = "hidden";
+startBtn.addEventListener('click', function(event) {
         //button becomes invisible upon click
         startBtn.style.visibility = "hidden";
+
         //questions become visible upon click
         questions.style.visibility = "visible";
+
         //put question on user interface and starts the game
         makeQuestion();
+});
+
+
+/////START HERE. record output to localStorage
+// submit button functionality
+submissionForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    console.log(score);
+    console.log(userName.value);
 });
 
 
