@@ -3,6 +3,8 @@
 var questionTitle = document.getElementById("question-title");
 var answerChoice = document.querySelectorAll(".answer-choice");
 var numberCorrect = document.getElementById("number-correct");
+var questions = document.getElementById("question-bank");
+var startBtn = document.getElementById("btn-newGame");
 
 /** holds all questions used in the quiz. Stores an array of objects. Each question is an object.
  *  Each question has three properties:
@@ -32,7 +34,6 @@ function randomQuestion() {
 
 function makeQuestion() {
     //Creates questions and displays information on page
-
     // generates random question to get data about
     var randomQ = randomQuestion()
 
@@ -43,43 +44,80 @@ function makeQuestion() {
     for (var i = 0; i < answerChoice.length; i++) {
         answerChoice[i].textContent = randomQ.answers[i];
     }
-
-    //remove question from questionBank so that it is not asked again
-    qIndex = questionBank.indexOf(randomQ);
-    questionBank.splice(qIndex, 1);
-
     return randomQ;
 }
 
+function evaluateUserChoice(randomQ) {
+    //takes random question created from makeQuestion
+    //evaluates if user clicks on correct answer or not
 
-function userChoice(randomQ) {
-    // checks to see if user has clicked correct answer
-    // need to iterate over them because I am selecting all elements in class answer-choice
     for (var i = 0; i < answerChoice.length; i++) {
         answerChoice[i].addEventListener("click", function(event) {
             var element = event.target;
-            //checking to see if the user choise is correct
+            //checking to see if user choice is correct
             if (element.textContent == randomQ.correct) {
-                // increment correct answer by 1 if correct answer chosen. Update correct answers on page
-                score++;
-                numberCorrect.textContent = score;
+                console.log('correct!');
             } else {
-                if (score > 0) {
-                    // decrement correct answer by 1 if incorrect answer chosen
-                    score--;
-                    numberCorrect.textContent = score;
-                }
+                console.log('incorrect');
             }
         });
     }
 }
+var test = makeQuestion()
+
+// function userChoice(randomQ) {
+//     // checks to see if user has clicked correct answer
+//     // need to iterate over them because I am selecting all elements in class answer-choice
+//     for (var i = 0; i < answerChoice.length; i++) {
+//         answerChoice[i].addEventListener("click", function(event) {
+//             var element = event.target;
+//             //checking to see if the user choise is correct
+//             if (element.textContent == randomQ.correct) {
+//                 // increment correct answer by 1 if correct answer chosen. Update correct answers on page
+//                 score++;
+//                 numberCorrect.textContent = score;
+
+//                 //remove question from questionBank so that it is not asked again
+//                 qIndex = questionBank.indexOf(randomQ);
+//                 questionBank.splice(qIndex, 1);
+
+//                 if (questionBank.length > 0) {
+//                     var nextQ = makeQuestion();       // goes to next question if correct answer
+//                     userChoice(nextQ);
+//                 }
+                
+//             } else if (element.textContent != randomQ.correct) {
+                
+//                 //remove question from questionBank so that it is not asked again
+//                 qIndex = questionBank.indexOf(randomQ);
+//                 questionBank.splice(qIndex, 1);
+
+//                 if (questionBank.length > 0) {
+//                     var nextQ = makeQuestion();       //goes to next question if incorrect answer
+//                     userChoice(nextQ);
+//                 } 
+
+//             }
+//         });
+//     }
+// }
+
+
+startBtn.addEventListener('click', function() {
+        //button becomes invisible upon click
+        startBtn.style.visibility = "hidden";
+        //questions become visible upon click
+        questions.style.visibility = "visible";
+});
 
 
 function main() {
-    //main function which controls the flow of the game
-    
-    var randomQ = makeQuestion();
-    userChoice(randomQ);
+
+    questions.style.visibility = "hidden";
+
+    // main function which controls the flow of the game
+    // var randomQ = makeQuestion();
+    // userChoice(randomQ);
 }
 
 

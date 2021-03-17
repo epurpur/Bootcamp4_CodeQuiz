@@ -1,0 +1,121 @@
+
+
+:root {
+    --font-family: Verdana, Geneva, Tahoma, sans-serif;
+    --main-background: rgb(179, 180, 198);
+    --card-color: rgb(67, 67, 67);
+    --font-white: rgb(255, 255, 255);
+    --card-background: rgb(179, 179, 179);
+}
+
+
+/* Global Styles */
+* {
+    /*border: 1px solid black;*/
+}
+
+/* <body> */
+
+body {
+    background-color: var(--main-background);
+    color: var(--card-color);
+}
+
+/* <main> */
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 70px;
+    padding: 10px;
+}
+
+#btn-newGame {
+    font-size: 30px;
+    border-radius: 5px;
+    background-color: var(--card-color);
+    color: var(--font-white);
+    width: 30%;
+}
+
+#btn-newGame:hover {
+    background-color: var(--font-white);
+    color: var(--card-color);
+}
+
+p {
+    font-size: 25px;
+}
+
+#question-bank {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--card-background);
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 20px 90px 20px 90px;
+}
+
+ol {
+    font-size: 25px;
+}
+
+.answer-choice {
+    padding: 5px;
+    margin: 5px;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: var(--card-color);
+    color: var(--font-white);
+}
+
+.answer-choice:hover {
+    background-color: var(--font-white);
+    color: var(--card-color);
+}
+
+#number-correct {
+    font-size: 25px;
+}
+
+
+
+/* Media Queries */
+@media screen and (max-width: 680px) {
+
+    body h1 {
+        font-size: 35px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    #question-bank {
+        margin: 20px 40px 20px 40px;
+
+    }
+
+    ol {
+        font-size: 20px;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+
+    p {
+        font-size: 15px;
+    }
+}
