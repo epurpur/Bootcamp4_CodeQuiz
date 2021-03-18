@@ -10,6 +10,7 @@ var finalInputForm = document.getElementById('final-user-input');
 var finalScoreValue = document.getElementById('final-score-value');
 var submissionForm = document.getElementById('submission-form');
 var userName = document.getElementById('user-name');
+var submitBtn = document.getElementById('btnSubmitScore');
 
 /** holds all questions used in the quiz. Stores an array of objects. Each question is an object.
  *  Each question has three properties:
@@ -78,7 +79,7 @@ function evaluateUserChoice(randomQ) {
                 } else {                         //if there are no questions remaining in the questionBank
                     setFinalStyling();   //set final styles of page; 
                 }
-            } 
+            }    //HERE I SHOULD BE ABLE TO RUN makeQuestion(); 
         });
     }
 }
@@ -100,6 +101,7 @@ function setFinalStyling() {
 questions.style.visibility = "hidden";
 finalInputForm.style.visibility = "hidden";
 startBtn.addEventListener('click', function(event) {
+        console.log('clicked');    
         //button becomes invisible upon click
         startBtn.style.visibility = "hidden";
 
@@ -115,8 +117,42 @@ startBtn.addEventListener('click', function(event) {
 // submit button functionality
 submissionForm.addEventListener('submit', function(event) {
     event.preventDefault();
-    console.log(score);
-    console.log(userName.value);
+
+    // create object with user information
+    var userInfo = {
+        name: userName.value,
+        userScore: score
+    }
+
+    // get array of current datafrom localStorage or an empty array if nothing stored in localStorage
+    var storedData = JSON.parse(localStorage.getItem("userInfo") || "[]");
+    
+    // insert current userInfo into storedData
+    // userInfo.push(storedData);
+
+    // sort items in storedData in descending order by their 'score' value .sort().reverse()
+                        // var arrayCarObjects = [
+                        //     {brand: "Honda",        topSpeed: 45},
+                        //     {brand: "Ford",         topSpeed: 6},
+                        //     {brand: "Toyota",       topSpeed: 240},
+                        //     {brand: "Chevrolet",    topSpeed: 120},
+                        //     {brand: "Ferrari",      topSpeed: 1000}
+                        //     ];
+                        // arrayCarObjects.sort((a, b) => (a.topSpeed - b.topSpeed)).reverse();
+
+
+    // remove last item from array (.pop())
+    storedData.pop();
+
+    // set storedData back into local storage
+    // localStorage.setItem("userInfo", JSON.stringify(storedData));
+
+    //go to highscores page
+    submitBtn.addEventListener("click", function() {
+        location.href = "highscore.html";
+    });
+    
+
 });
 
 

@@ -36,6 +36,19 @@ h2 {
     font-family: var(--font-family);
 }
 
+#btn-playAgain {
+    font-size: 30px;
+    border-radius: 5px;
+    background-color: var(--card-color);
+    color: var(--font-white);
+    width: 30%;
+}
+
+#btn-playAgain:hover {
+    background-color: var(--font-white);
+    color: var(--card-color);
+}
+
 #scores-display {
     display: flex;
     flex-direction: row;
