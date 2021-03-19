@@ -115,17 +115,17 @@ function setAnswersText(randomQ) {
 function evaluateUserChoice(allAnswerChoices, randomQ) {
     // attaches event handler to each answer choice
     // evaluates user choice if it is correct or not
-    for (var i = 0; i < allAnswerChoices.length; i++) {
-        allAnswerChoices[i].addEventListener("click", function(event) {
-            var element = event.target;
-            if (element.textContent == randomQ.correct) {
+    for (var i = 0; i < allAnswerChoices.length; i++) {                     
+        allAnswerChoices[i].addEventListener("click", function(event) {         //add event listener to each answer choice
+            var element = event.target;                                         
+            if (element.textContent == randomQ.correct) {                       //evaluate if user chose correct choice
                 console.log('correct');
                 score++;
                 removeHTML();
                 main();
             } else {
                 console.log('incorrect')
-                timeleft -= 5;
+                timeleft -= 5;                                                  //decrement 5 on timer for wrong answer
                 removeHTML();
                 main();
             }
