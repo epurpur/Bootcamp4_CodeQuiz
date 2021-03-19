@@ -5,7 +5,6 @@ var answerChoice = document.querySelectorAll(".answer-choice");
 var numberCorrect = document.getElementById("number-correct");
 var questions = document.getElementById("question-bank");
 var startBtn = document.getElementById("btn-newGame");
-var scoreboard = document.getElementById("scoreboard");
 var finalInputForm = document.getElementById('final-user-input');
 var finalScoreValue = document.getElementById('final-score-value');
 var submissionForm = document.getElementById('submission-form');
@@ -35,7 +34,7 @@ var score = 0;
 
 
 // global timer variable
-var timeleft = 3;
+var timeleft = 30;
 
 function timer() {
     // starts timer countdown starting from value of timeLeft
@@ -81,88 +80,38 @@ function makeQuestion() {
 
 
 
-
-
-
-// function evaluateUserChoice(randomQ) {
-//     // takes random question created from makeQuestion()
-//     // evaluates if user clicks on correct answer or not
-    
-//     if (timeleft > 0) {      // if there is still time left on the clock
-//         for (var i = 0; i < answerChoice.length; i++) {
-//             answerChoice[i].addEventListener("click", function(event) {
-//                 var element = event.target;
-//                 //checking to see if user choice is correct
-//                 if (element.textContent === randomQ.correct) {
-//                     score++;
-//                     numberCorrect.textContent = score;
-//                     // answerChoice[i].removeEventListener("click", fn);
-//                     if (questionBank.length > 0) {   //if there are any questions remaining in the questionBank
-//                         makeQuestion();   //make next question
-//                     } else {                         //if there are no questions remaining in the questionBank
-//                         setFinalStyling();   //set final styles of page; 
-//                     }
-//                 } else {
-//                     // answerChoice[i].removeEventListener("click", fn);
-//                     if (questionBank.length > 0) {
-//                         makeQuestion();
-//                     } else {
-//                         setFinalStyling();
-//                     }
-//                 }    
-//             });
-//         }
-//     } else {       //if no time remaining, skip straight to final styling upon click
-//         setFinalStyling();
-//     }
-// }
-
-
 function evaluateUserChoice(randomQ) {
     // takes random question created from makeQuestion()
     // evaluates if user clicks on correct answer or not
-
-    for (var i = 0; i < answerChoice.length; i++) {
-        // *** NOTE: Must be `const` or `let`, not `var`
-        console.log('outer', answerChoice[i]);
-        const fn = function(event) {
-            console.log(answerChoice[i]);
-            var element = event.target;
-            //checking to see if user choice is correct
-            if (element.textContent === randomQ.correct) {
-                score++;
-                numberCorrect.textContent = score;
-                answerChoice[i].removeEventListener("click", fn); // ***
-                makeQuestion();                     // resets text content of HTML
-            } else {
-                answerChoice[i].removeEventListener("click", fn); // ***
-                makeQuestion();                     // resets text content of HTML
-            }    
-        };
-        answerChoice[i].addEventListener("click", fn);
+    // This logic is broken. Currently only works if user chooses correct answer
+    
+    if (timeleft > 0) {                                                         //checks if there is still time left on the clock
+        for (var i = 0; i < answerChoice.length; i++) {                         //iterate through answer choices
+            answerChoice[i].addEventListener("click", function(event) {         //add event listener to each answer choice
+                var element = event.target;                                     //element = what the user clicks on
+                if (element.textContent === randomQ.correct) {                  //checking to see if user choice is correct
+                    score++;                                                    //increment score by 1
+                    numberCorrect.textContent = score;                          //set textContent of numberCorrect to the value of current score
+                    if (questionBank.length > 0) {                              //if there are any questions remaining in the questionBank
+                        if (timeleft > 0) {                                     //check is there is still time left on the clock
+                            makeQuestion();                                     //make new question
+                        }
+                    } else {                                                    //if there are no questions remaining in the questionBank
+                        setFinalStyling();                                      //set final styles of page; 
+                    }
+                }    
+            });
+        }
+    } else {                                                                    //if no time remaining, skip straight to final styling upon click
+        setFinalStyling();
     }
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function setFinalStyling() {
     // renders final styles on page to display final score and final game form
-    questions.remove();     //removes questionBank
+    questions.remove();             //removes questionBank
     
     // make final input form visible;
     finalInputForm.style.visibility = "visible";
@@ -198,7 +147,6 @@ startBtn.addEventListener('click', function(event) {
 });
 
 
-/////START HERE. record output to localStorage
 // submit button functionality
 submissionForm.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -211,29 +159,25 @@ submissionForm.addEventListener('submit', function(event) {
 
     // get array of current datafrom localStorage or an empty array if nothing stored in localStorage
     var storedData = JSON.parse(localStorage.getItem("userInfo") || "[]");
-    
+
     // insert current userInfo into storedData
-    // userInfo.push(storedData);
+    storedData.push(userInfo);
 
-    // sort items in storedData in descending order by their 'score' value .sort().reverse()
-                        // var arrayCarObjects = [
-                        //     {brand: "Honda",        topSpeed: 45},
-                        //     {brand: "Ford",         topSpeed: 6},
-                        //     {brand: "Toyota",       topSpeed: 240},
-                        //     {brand: "Chevrolet",    topSpeed: 120},
-                        //     {brand: "Ferrari",      topSpeed: 1000}
-                        //     ];
-                        // arrayCarObjects.sort((a, b) => (a.topSpeed - b.topSpeed)).reverse();
+    // sort items in storedData in descending order by their 'score' value
+    // Because my logic is broken and all scores are 7, this is meaningless. But it would work if correct gameplay logic was in place
+    storedData.sort((a, b) => (a.userScore - b.userScore)).reverse()
 
-
-    // remove last item from array (.pop())
-    storedData.pop();
-
-    // set storedData back into local storage
-    // localStorage.setItem("userInfo", JSON.stringify(storedData));
+    // If more than 5 items in array, remove last item which is lowest score
+    if (storedData.length > 5) {
+        storedData.pop()
+    } 
 
     //go to highscores page
     submitBtn.addEventListener("click", function() {
+
+        // set storedData back into local storage
+        localStorage.setItem("userInfo", JSON.stringify(storedData));
+
         location.href = "highscore.html";
     });
     
@@ -250,6 +194,5 @@ quizTitle.addEventListener("click", function() {
     listenerExists = true;
     console.log('Listener Exists?: ',listenerExists);
 });
-
 
 
