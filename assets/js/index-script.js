@@ -55,6 +55,7 @@ function timer() {
 
         if (timeleft <= 0) {
             clearInterval(countDown);   // stops at 0
+            timerElement.textContent = "No Time Remaining!";
         }
     }, 1000);    //counts in milliseconds. 1000ms = 1second
 }
@@ -102,9 +103,7 @@ function evaluateUserChoice(randomQ) {
                     score++;                                                    //increment score by 1
                     numberCorrect.textContent = score;                          //set textContent of numberCorrect to the value of current score
                     if (questionBank.length > 0) {                              //if there are any questions remaining in the questionBank
-                        if (timeleft > 0) {                                     //check is there is still time left on the clock
-                            makeQuestion();                                     //make new question
-                        }
+                        makeQuestion();
                     } else {                                                    //if there are no questions remaining in the questionBank
                         setFinalStyling();                                      //set final styles of page; 
                     }
