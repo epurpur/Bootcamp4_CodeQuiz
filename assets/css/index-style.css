@@ -1,5 +1,7 @@
 
-
+/******************/
+/* Root Variables */
+/******************/
 :root {
     --font-family: Verdana, Geneva, Tahoma, sans-serif;
     --main-background: rgb(179, 180, 198);
@@ -8,21 +10,17 @@
     --card-background: rgb(179, 179, 179);
 }
 
-
-/* Global Styles */
-* {
-    /*border: 1px solid black;*/
-}
-
+/**********/
 /* <body> */
-
+/**********/
 body {
     background-color: var(--main-background);
     color: var(--card-color);
 }
 
+/**********/
 /* <main> */
-
+/**********/
 main {
     display: flex;
     flex-direction: column;
@@ -37,6 +35,9 @@ h1 {
     padding: 10px;
 }
 
+/*************************/
+/* Start New Game button */
+/*************************/
 #btn-newGame {
     font-size: 30px;
     border-radius: 5px;
@@ -54,6 +55,9 @@ p {
     font-size: 25px;
 }
 
+/*****************************/
+/* <section> - Question Bank */
+/*****************************/
 #question-bank {
     display: flex;
     flex-direction: column;
@@ -85,11 +89,17 @@ ol {
     color: var(--card-color);
 }
 
+/**************/
+/* Scoreboard */
+/**************/
 #number-correct {
     font-size: 25px;
 }
 
 
+/********************************/
+/* <section> - Final User Input */
+/********************************/
 #final-user-input {
     display: flex;
     flex-direction: column;
@@ -128,31 +138,25 @@ ol {
 }
 
 
+
+
+
+/*****************/
 /* Media Queries */
+/*****************/
 @media screen and (max-width: 680px) {
 
-    body h1 {
-        font-size: 35px;
-    }
+    body h1 {font-size: 35px;}
 
-    p {
-        font-size: 20px;
-    }
+    p {font-size: 20px;}
 
-    #question-bank {
-        margin: 20px 40px 20px 40px;
+    #question-bank {margin: 20px 40px 20px 40px;}
 
-    }
-
-    ol {
-        font-size: 20px;
-    }
+    ol {font-size: 20px;}
 }
 
 
 @media screen and (max-width: 500px) {
 
-    p {
-        font-size: 15px;
-    }
+    p {font-size: 15px;}
 }

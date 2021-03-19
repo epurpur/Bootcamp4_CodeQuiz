@@ -1,5 +1,7 @@
 
-
+/******************/
+/* Root Variables */
+/******************/
 :root {
     --font-family: Verdana, Geneva, Tahoma, sans-serif;
     --main-background: rgb(179, 180, 198);
@@ -8,15 +10,19 @@
     --card-background: rgb(179, 179, 179);
 }
 
-* {
-    /*border: 1px solid black;*/
-}
 
+/**********/
+/* <body> */
+/**********/
 body {
     background-color: var(--main-background);
     color: var(--card-color);
 }
 
+
+/**********/
+/* <main> */
+/**********/
 main {
     display: flex;
     flex-direction: column;
@@ -36,6 +42,10 @@ h2 {
     font-family: var(--font-family);
 }
 
+
+/*********************/
+/* Play Again button */
+/*********************/
 #btn-playAgain {
     font-size: 30px;
     border-radius: 5px;
@@ -49,6 +59,10 @@ h2 {
     color: var(--card-color);
 }
 
+
+/******************************/
+/* <section> - Scores Display */
+/******************************/
 #scores-display {
     display: flex;
     flex-direction: row;
