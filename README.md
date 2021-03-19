@@ -21,14 +21,7 @@ THEN I can save my initials and my score
 ```
 
 ## Known Issues
-To be honest I ran out of time to finish the game properly. It is broken to some extent and other features are left out. I put in as much time as I could this week and felt it better to submit an incomplete assignment and take a bad grade than to submit nothing.
-
-1. Gameplay is broken
-    - I could not implement the correct logic so as it stands, the game only moves to the next question if the correct answer is clicked. 
-    - There is no indicator of 'correct' or 'incorrect' depending on what the user clicks
-2. No 'clear scores' button
-    - I ran out of time to put in a 'clear scores' button in the highscores.html page, to clear scores from localStorage.
-3. Timer doesn't work right
+1. Timer doesn't work right
     - As of now, the timer counts down. When the clock hits 0, the game should be over immediately. As of now, when the clock is 0, the game will not show "game over" until the user clicks another answer choice.
 
 
