@@ -1,4 +1,8 @@
 
+/**
+ * DECLARING VARIABLES
+ */
+
 // declaring variables for HTML elements needed to interact with
 var questionTitle = document.getElementById("question-title");
 var answerChoice = document.querySelectorAll(".answer-choice");
@@ -32,9 +36,16 @@ var questionBank = [
 // accumulator variable which counts correct answer choices
 var score = 0;
 
-
 // global timer variable
 var timeleft = 30;
+
+
+
+
+/**
+ * DECLARING FUNCTIONS
+ */
+
 
 function timer() {
     // starts timer countdown starting from value of timeLeft
@@ -47,7 +58,6 @@ function timer() {
         }
     }, 1000);    //counts in milliseconds. 1000ms = 1second
 }
-
 
 
 function randomQuestion() {
@@ -79,7 +89,6 @@ function makeQuestion() {
 }
 
 
-
 function evaluateUserChoice(randomQ) {
     // takes random question created from makeQuestion()
     // evaluates if user clicks on correct answer or not
@@ -108,7 +117,6 @@ function evaluateUserChoice(randomQ) {
 }
 
 
-
 function setFinalStyling() {
     // renders final styles on page to display final score and final game form
     questions.remove();             //removes questionBank
@@ -122,6 +130,11 @@ function setFinalStyling() {
     // set timer to display final message
     timerElement.textContent = "No Time Remaining!";
 }
+
+
+/**
+ * DECLARING STYLES AND EVENT LISTENERS
+ */
 
 
 // starts with invisible questions and final input form, when start button is clicked, questions become visible and a question appears
@@ -180,19 +193,10 @@ submissionForm.addEventListener('submit', function(event) {
 
         location.href = "highscore.html";
     });
-    
-
 });
 
 
 
-var quizTitle = document.getElementById('quiz');
-var listenerExists = false;
 
-quizTitle.addEventListener("click", function() {
-    console.log('title click');
-    listenerExists = true;
-    console.log('Listener Exists?: ',listenerExists);
-});
 
 
