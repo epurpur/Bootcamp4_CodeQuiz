@@ -47,7 +47,7 @@ function randomQuestion() {
 
 
 function makeHTML() {
-    //Makes a new question when start button clicked
+    //Makes HTML for a new question when start button clicked
         
     var timerEl = document.getElementById('timer-element');
 
@@ -115,8 +115,6 @@ function setAnswersText(randomQ) {
 function evaluateUserChoice(allAnswerChoices, randomQ) {
     // attaches event handler to each answer choice
     // evaluates user choice if it is correct or not
-
-
     for (var i = 0; i < allAnswerChoices.length; i++) {
         allAnswerChoices[i].addEventListener("click", function(event) {
             var element = event.target;
@@ -214,7 +212,6 @@ startBtn.addEventListener('click', function(event) {
         //start game timer
         timer();
 });
-
 
 
 // submit button functionality
