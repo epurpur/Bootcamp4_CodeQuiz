@@ -32,7 +32,7 @@ var timeCount = document.getElementById('time-count');
 var score = 0;
 
 // global timer variable
-var timeleft = 45;
+var timeleft = 3;
 
 
 // /**
@@ -155,7 +155,7 @@ function setFinalStyling() {
     finalScoreValue.textContent = score;
 
     // set timer to display final message
-    timerElement.textContent = "No Time Remaining!";
+    timerElement.textContent = "Game Over!";
 }
 
 
@@ -167,7 +167,7 @@ function timer() {
 
         if (timeleft <= 0) {
             clearInterval(countDown);   // stops at 0
-            timerElement.textContent = "No Time Remaining!";
+            timerElement.textContent = "Make final choice and game will end!";
         }
     }, 1000);    //counts in milliseconds. 1000ms = 1second
 }
