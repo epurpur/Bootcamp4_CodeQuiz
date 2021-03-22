@@ -32,7 +32,7 @@ var timeCount = document.getElementById('time-count');
 var score = 0;
 
 // global timer variable
-var timeleft = 3;
+var timeleft = 45;
 
 
 // /**
